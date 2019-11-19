@@ -4,11 +4,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainDynamic3D {
+public class Main {
     private static final List<Soldier> SOLDIERS = new ArrayList<>();
 
     public static void main(String[] args) {
-        String fileName = "inMed.txt";
+        String fileName = "inBig.txt";
         String outputName = "out.txt";
         Roman roman = readInput(fileName);
 
@@ -20,7 +20,7 @@ public class MainDynamic3D {
         writeResult(takenSoldiers, teamStrength);
     }
 
-    static Roman readInput(String fileName) {
+    private static Roman readInput(String fileName) {
         int numberOfSoldiers;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
             String[] line = bufferedReader.readLine().split(" ");
