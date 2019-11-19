@@ -6,13 +6,11 @@ public class Soldier {
     int strength;
     int supplies;
     int entertainment;
-    int temp;
 
     public Soldier(int strength, int supplies, int entertainment) {
         this.strength = strength;
         this.supplies = supplies;
         this.entertainment = entertainment;
-        temp = supplies * 100 + entertainment;
     }
 
     @Override

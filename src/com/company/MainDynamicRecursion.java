@@ -1,9 +1,5 @@
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +10,7 @@ public class MainDynamicRecursion {
 
     public static void main(String[] args) {
         String fileName = "in5.txt";
-        Roman roman = readInput(fileName);
-
+        Roman roman = MainDynamic3D.readInput(fileName);
         printData(roman);
 
         List<Soldier> hiredSoldiers = new ArrayList<>();
@@ -28,33 +23,6 @@ public class MainDynamicRecursion {
         for (int i = hiredSoldiers.size() - 1; i >= 0; i--) {
             Soldier rentSoldier = hiredSoldiers.get(i);
             System.out.print(SOLDIERS.indexOf(rentSoldier) + 1 + " ");
-
-        }
-    }
-
-    private static Roman readInput(String fileName) {
-        int numberOfSoldiers;
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
-            String[] line = bufferedReader.readLine().split(" ");
-            int supplies = Integer.parseInt(line[0]);
-            int entertainment = Integer.parseInt(line[1]);
-            Roman roman = new Roman(supplies, entertainment);
-
-            numberOfSoldiers = Integer.parseInt(bufferedReader.readLine());
-
-            for (int i = 0; i < numberOfSoldiers; i++) {
-                line = bufferedReader.readLine().split(" ");
-                int strength = Integer.parseInt(line[0]);
-                int solderSupplies = Integer.parseInt(line[1]);
-                int solderEntertainment = Integer.parseInt(line[2]);
-
-                SOLDIERS.add(new Soldier(strength, solderSupplies, solderEntertainment));
-            }
-            return roman;
-        } catch (FileNotFoundException ex) {
-            throw new RuntimeException("file not found" + ex);
-        } catch (IOException ex) {
-            throw new RuntimeException("cannot read from file", ex);
         }
     }
 
