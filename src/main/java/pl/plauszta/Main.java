@@ -1,4 +1,4 @@
-package com.company;
+package pl.plauszta;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package com.company;
+package pl.plauszta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class Knapsack {
         things.remove(index);
     }
 
-    public Result getResult(){
+    public Result getResult() {
         int[][][] table = getFilledTable();
         int value = getMaxValue(table);
         List<Integer> list = getTakenThingsIndexes(table);
@@ -42,15 +42,15 @@ public class Knapsack {
     }
 
     private List<Integer> getTakenThingsIndexes(int[][][] table) {
-        int constraint1 = table[0].length - 1;
-        int constraint2 = table[0][0].length - 1;
+        int constraintKnapsack1 = constraint1;
+        int constraintKnapsack2 = constraint2;
         List<Integer> takenThings = new ArrayList<>();
 
-        for (int i = things.size(); i > 0 && constraint2 > 0 && constraint1 > 0; i--) {
-            if (table[i][constraint1][constraint2] > table[i - 1][constraint1][constraint2]) {
+        for (int i = things.size(); i > 0 && constraintKnapsack2 > 0 && constraintKnapsack1 > 0; i--) {
+            if (table[i][constraintKnapsack1][constraintKnapsack2] > table[i - 1][constraintKnapsack1][constraintKnapsack2]) {
                 takenThings.add(i);
-                constraint1 = constraint1 - things.get(i - 1).getConstraint1();
-                constraint2 = constraint2 - things.get(i - 1).getConstraint2();
+                constraintKnapsack1 = constraintKnapsack1 - things.get(i - 1).getConstraint1();
+                constraintKnapsack2 = constraintKnapsack2 - things.get(i - 1).getConstraint2();
             }
         }
         takenThings.sort(Integer::compareTo);
@@ -65,14 +65,14 @@ public class Knapsack {
             int thingConstraint1 = things.get(i).getConstraint1();
             int thingConstraint2 = things.get(i).getConstraint2();
 
-            //najpierw przepisywane są wartosci z poprzedniego zolnierza
+            //rewriting the values from the previous line
             for (int j = 0; j <= constraint1; j++) {
                 if (constraint2 + 1 >= 0) {
                     System.arraycopy(table[i][j], 0, table[i + 1][j], 0, constraint2 + 1);
                 }
             }
 
-            //wlasciwe uzupelnienie tabeli dla danego zolnierza
+            //completing the line
             for (int j = thingConstraint1; j <= constraint1; j++) {
                 for (int k = thingConstraint2; k <= constraint2; k++) {
                     table[i + 1][j][k] = Math.max(thingValue + table[i][j - thingConstraint1][k - thingConstraint2], table[i][j][k]);
