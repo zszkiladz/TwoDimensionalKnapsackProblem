@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Result {
     private int value;
@@ -25,5 +26,19 @@ public class Result {
                 "value=" + value +
                 ", takenThingIndexes=" + takenThingIndexes +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Result result = (Result) o;
+        return value == result.value &&
+                Objects.equals(takenThingIndexes, result.takenThingIndexes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value, takenThingIndexes);
     }
 }
