@@ -9,12 +9,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class KnapsackTest {
+class KnapsackTest {
     final String filesPath = "src/test/java/pl/plauszta/resources/";
     
     @Test
     @DisplayName("Testing algorithm for the in.txt file")
-    public void checkResultOfAlgorithm() {
+    void checkResultOfAlgorithm() {
         Knapsack knapsack = null;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filesPath + "in.txt"))) {
             String line = bufferedReader.readLine();
@@ -29,8 +29,8 @@ public class KnapsackTest {
                         Integer.parseInt(splitLine[2]))
                 );
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
         if (knapsack == null) {
             return;
@@ -42,7 +42,7 @@ public class KnapsackTest {
 
     @Test
     @DisplayName("Testing algorithm for the in1.txt file")
-    public void checkResultOfAlgorithm2() {
+    void checkResultOfAlgorithm2() {
         Knapsack knapsack = null;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/test/java/pl/plauszta/resources/in1.txt"))) {
             String line = bufferedReader.readLine();
@@ -57,8 +57,8 @@ public class KnapsackTest {
                         Integer.parseInt(splitLine[2]))
                 );
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
         if (knapsack == null) {
             return;
@@ -70,7 +70,7 @@ public class KnapsackTest {
 
     @Test
     @DisplayName("Testing algorithm for the in2.txt file")
-    public void checkResultOfAlgorithm3() {
+    void checkResultOfAlgorithm3() {
         Knapsack knapsack = null;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/test/java/pl/plauszta/resources/in2.txt"))) {
             String line = bufferedReader.readLine();
@@ -85,8 +85,8 @@ public class KnapsackTest {
                         Integer.parseInt(splitLine[2]))
                 );
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
         if (knapsack == null) {
             return;
