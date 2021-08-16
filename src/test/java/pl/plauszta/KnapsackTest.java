@@ -12,10 +12,10 @@ import java.util.Arrays;
 public class KnapsackTest {
 
     @Test
-    @DisplayName("Test1")
+    @DisplayName("Testing algorithm for the in.txt file")
     public void checkResultOfAlgorithm() {
         Knapsack knapsack = null;
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("in.txt"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/test/java/pl/plauszta/resources/in.txt"))) {
             String line = bufferedReader.readLine();
             String[] splittedLine = line.split(" ");
             knapsack = new Knapsack(Integer.parseInt(splittedLine[0]), Integer.parseInt(splittedLine[1]));
@@ -40,10 +40,10 @@ public class KnapsackTest {
     }
 
     @Test
-    @DisplayName("Test2")
+    @DisplayName("Testing algorithm for the in1.txt file")
     public void checkResultOfAlgorithm2() {
         Knapsack knapsack = null;
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("in1.txt"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/test/java/pl/plauszta/resources/in1.txt"))) {
             String line = bufferedReader.readLine();
             String[] splittedLine = line.split(" ");
             knapsack = new Knapsack(Integer.parseInt(splittedLine[0]), Integer.parseInt(splittedLine[1]));
@@ -68,10 +68,10 @@ public class KnapsackTest {
     }
 
     @Test
-    @DisplayName("Test3")
+    @DisplayName("Testing algorithm for the in2.txt file")
     public void checkResultOfAlgorithm3() {
         Knapsack knapsack = null;
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("in2.txt"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/test/java/pl/plauszta/resources/in2.txt"))) {
             String line = bufferedReader.readLine();
             String[] splittedLine = line.split(" ");
             knapsack = new Knapsack(Integer.parseInt(splittedLine[0]), Integer.parseInt(splittedLine[1]));
