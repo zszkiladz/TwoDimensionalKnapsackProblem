@@ -17,15 +17,15 @@ public class KnapsackTest {
         Knapsack knapsack = null;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/test/java/pl/plauszta/resources/in.txt"))) {
             String line = bufferedReader.readLine();
-            String[] splittedLine = line.split(" ");
-            knapsack = new Knapsack(Integer.parseInt(splittedLine[0]), Integer.parseInt(splittedLine[1]));
+            String[] splitLine = line.split(" ");
+            knapsack = new Knapsack(Integer.parseInt(splitLine[0]), Integer.parseInt(splitLine[1]));
 
             while ((line = bufferedReader.readLine()) != null) {
-                splittedLine = line.split(" ");
+                splitLine = line.split(" ");
                 knapsack.add(new Thing(
-                        Integer.parseInt(splittedLine[0]),
-                        Integer.parseInt(splittedLine[1]),
-                        Integer.parseInt(splittedLine[2]))
+                        Integer.parseInt(splitLine[0]),
+                        Integer.parseInt(splitLine[1]),
+                        Integer.parseInt(splitLine[2]))
                 );
             }
         } catch (IOException e) {
@@ -45,15 +45,15 @@ public class KnapsackTest {
         Knapsack knapsack = null;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/test/java/pl/plauszta/resources/in1.txt"))) {
             String line = bufferedReader.readLine();
-            String[] splittedLine = line.split(" ");
-            knapsack = new Knapsack(Integer.parseInt(splittedLine[0]), Integer.parseInt(splittedLine[1]));
+            String[] splitLine = line.split(" ");
+            knapsack = new Knapsack(Integer.parseInt(splitLine[0]), Integer.parseInt(splitLine[1]));
 
             while ((line = bufferedReader.readLine()) != null) {
-                splittedLine = line.split(" ");
+                splitLine = line.split(" ");
                 knapsack.add(new Thing(
-                        Integer.parseInt(splittedLine[0]),
-                        Integer.parseInt(splittedLine[1]),
-                        Integer.parseInt(splittedLine[2]))
+                        Integer.parseInt(splitLine[0]),
+                        Integer.parseInt(splitLine[1]),
+                        Integer.parseInt(splitLine[2]))
                 );
             }
         } catch (IOException e) {
@@ -73,15 +73,15 @@ public class KnapsackTest {
         Knapsack knapsack = null;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/test/java/pl/plauszta/resources/in2.txt"))) {
             String line = bufferedReader.readLine();
-            String[] splittedLine = line.split(" ");
-            knapsack = new Knapsack(Integer.parseInt(splittedLine[0]), Integer.parseInt(splittedLine[1]));
+            String[] splitLine = line.split(" ");
+            knapsack = new Knapsack(Integer.parseInt(splitLine[0]), Integer.parseInt(splitLine[1]));
 
             while ((line = bufferedReader.readLine()) != null) {
-                splittedLine = line.split(" ");
+                splitLine = line.split(" ");
                 knapsack.add(new Thing(
-                        Integer.parseInt(splittedLine[0]),
-                        Integer.parseInt(splittedLine[1]),
-                        Integer.parseInt(splittedLine[2]))
+                        Integer.parseInt(splitLine[0]),
+                        Integer.parseInt(splitLine[1]),
+                        Integer.parseInt(splitLine[2]))
                 );
             }
         } catch (IOException e) {
