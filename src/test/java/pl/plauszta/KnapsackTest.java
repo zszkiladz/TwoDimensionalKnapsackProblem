@@ -10,12 +10,13 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class KnapsackTest {
-
+    final String filesPath = "src/test/java/pl/plauszta/resources/";
+    
     @Test
     @DisplayName("Testing algorithm for the in.txt file")
     public void checkResultOfAlgorithm() {
         Knapsack knapsack = null;
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/test/java/pl/plauszta/resources/in.txt"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filesPath + "in.txt"))) {
             String line = bufferedReader.readLine();
             String[] splitLine = line.split(" ");
             knapsack = new Knapsack(Integer.parseInt(splitLine[0]), Integer.parseInt(splitLine[1]));
