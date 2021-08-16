@@ -71,7 +71,6 @@ public class Knapsack {
                     System.arraycopy(table[i][j], 0, table[i + 1][j], 0, constraint2 + 1);
                 }
             }
-
             //completing the line
             for (int j = thingConstraint1; j <= constraint1; j++) {
                 for (int k = thingConstraint2; k <= constraint2; k++) {
@@ -79,7 +78,6 @@ public class Knapsack {
                 }
             }
         }
-
         return table;
     }
 
