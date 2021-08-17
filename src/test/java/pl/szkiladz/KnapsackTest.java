@@ -1,4 +1,4 @@
-package pl.plauszta;
+package pl.szkiladz;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

@@ -1,4 +1,4 @@
-package pl.plauszta;
+package pl.szkiladz;
 
 import java.util.Objects;
 
