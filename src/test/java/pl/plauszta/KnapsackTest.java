@@ -10,6 +10,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 
 class KnapsackTest {
@@ -56,7 +58,7 @@ class KnapsackTest {
             throw new RuntimeException("Cannot find file '" + filepath + "'");
         }
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(fileUrl.toURI())))) {
+        try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(fileUrl.toURI()))) {
             String line = bufferedReader.readLine();
             String[] splitLine = line.split(" ");
             Knapsack knapsack = new Knapsack(Integer.parseInt(splitLine[0]), Integer.parseInt(splitLine[1]));
