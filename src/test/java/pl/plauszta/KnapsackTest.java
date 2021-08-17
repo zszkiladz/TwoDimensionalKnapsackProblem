@@ -4,15 +4,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 
 class KnapsackTest {
 
@@ -58,17 +56,17 @@ class KnapsackTest {
             throw new RuntimeException("Cannot find file '" + filepath + "'");
         }
 
-        try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(fileUrl.toURI()))) {
-            String line = bufferedReader.readLine();
-            String[] splitLine = line.split(" ");
-            Knapsack knapsack = new Knapsack(Integer.parseInt(splitLine[0]), Integer.parseInt(splitLine[1]));
+        try {
+            List<String> fileContent = Files.readAllLines(Paths.get(fileUrl.toURI()));
+            String[] knapsackConstraintsLine = fileContent.get(0).split(" ");
+            Knapsack knapsack = new Knapsack(Integer.parseInt(knapsackConstraintsLine[0]), Integer.parseInt(knapsackConstraintsLine[1]));
 
-            while ((line = bufferedReader.readLine()) != null) {
-                splitLine = line.split(" ");
+            for (int i = 1; i < fileContent.size(); i++) {
+                String[] thingLine = fileContent.get(i).split(" ");
                 knapsack.add(new Thing(
-                        Integer.parseInt(splitLine[0]),
-                        Integer.parseInt(splitLine[1]),
-                        Integer.parseInt(splitLine[2]))
+                        Integer.parseInt(thingLine[0]),
+                        Integer.parseInt(thingLine[1]),
+                        Integer.parseInt(thingLine[2]))
                 );
             }
 
