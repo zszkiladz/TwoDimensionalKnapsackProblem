@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Arrays;
 
 class KnapsackTest {
-    final String filesPath = "src/test/resources/";
     
     @Test
     @DisplayName("Testing algorithm for the in.txt file")
@@ -50,7 +50,11 @@ class KnapsackTest {
 
     private Knapsack readKnapsackFromFile(String file) {
         Knapsack knapsack = null;
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filesPath + file))) {
+        final URL resource = KnapsackTest.class.getClassLoader().getResource(file);
+        if (resource == null){
+            throw new RuntimeException("File not found");
+        }
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(resource.getFile()))) {
             String line = bufferedReader.readLine();
             String[] splitLine = line.split(" ");
             knapsack = new Knapsack(Integer.parseInt(splitLine[0]), Integer.parseInt(splitLine[1]));
