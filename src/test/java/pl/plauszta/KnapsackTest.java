@@ -56,11 +56,10 @@ class KnapsackTest {
             throw new RuntimeException("Cannot find file '" + filepath + "'");
         }
 
-        Knapsack knapsack = null;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(fileUrl.toURI())))) {
             String line = bufferedReader.readLine();
             String[] splitLine = line.split(" ");
-            knapsack = new Knapsack(Integer.parseInt(splitLine[0]), Integer.parseInt(splitLine[1]));
+            Knapsack knapsack = new Knapsack(Integer.parseInt(splitLine[0]), Integer.parseInt(splitLine[1]));
 
             while ((line = bufferedReader.readLine()) != null) {
                 splitLine = line.split(" ");
@@ -75,6 +74,5 @@ class KnapsackTest {
         } catch (IOException | URISyntaxException ex) {
             throw new RuntimeException("Cannot read knapsack", ex);
         }
-        return knapsack;
     }
 }
