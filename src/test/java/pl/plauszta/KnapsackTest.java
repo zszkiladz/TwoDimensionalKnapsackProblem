@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 class KnapsackTest {
-    final String filesPath = "src/test/java/pl/plauszta/resources/";
+    final String filesPath = "src/test/resources/";
     
     @Test
     @DisplayName("Testing algorithm for the in.txt file")
@@ -44,7 +44,7 @@ class KnapsackTest {
     @DisplayName("Testing algorithm for the in1.txt file")
     void checkResultOfAlgorithm2() {
         Knapsack knapsack = null;
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/test/java/pl/plauszta/resources/in1.txt"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filesPath + "in1.txt"))) {
             String line = bufferedReader.readLine();
             String[] splitLine = line.split(" ");
             knapsack = new Knapsack(Integer.parseInt(splitLine[0]), Integer.parseInt(splitLine[1]));
@@ -72,7 +72,7 @@ class KnapsackTest {
     @DisplayName("Testing algorithm for the in2.txt file")
     void checkResultOfAlgorithm3() {
         Knapsack knapsack = null;
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/test/java/pl/plauszta/resources/in2.txt"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filesPath + "in2.txt"))) {
             String line = bufferedReader.readLine();
             String[] splitLine = line.split(" ");
             knapsack = new Knapsack(Integer.parseInt(splitLine[0]), Integer.parseInt(splitLine[1]));
