@@ -5,13 +5,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Arrays;
 
 class KnapsackTest {
-    final String filesPath = "src/test/resources/";
-    
+
     @Test
     @DisplayName("Testing algorithm for the in.txt file")
     void checkResultOfAlgorithm() {
@@ -48,9 +50,14 @@ class KnapsackTest {
         Assertions.assertEquals(expectedResult, result);
     }
 
-    private Knapsack readKnapsackFromFile(String file) {
+    private Knapsack readKnapsackFromFile(String filepath) {
+        URL fileUrl = KnapsackTest.class.getClassLoader().getResource(filepath);
+        if (fileUrl == null) {
+            throw new RuntimeException("Cannot find file '" + filepath + "'");
+        }
+
         Knapsack knapsack = null;
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filesPath + file))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(fileUrl.toURI())))) {
             String line = bufferedReader.readLine();
             String[] splitLine = line.split(" ");
             knapsack = new Knapsack(Integer.parseInt(splitLine[0]), Integer.parseInt(splitLine[1]));
@@ -63,8 +70,10 @@ class KnapsackTest {
                         Integer.parseInt(splitLine[2]))
                 );
             }
-        } catch (IOException ex) {
-            ex.printStackTrace();
+
+            return knapsack;
+        } catch (IOException | URISyntaxException ex) {
+            throw new RuntimeException("Cannot read knapsack", ex);
         }
         return knapsack;
     }
