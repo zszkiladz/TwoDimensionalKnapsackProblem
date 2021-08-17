@@ -4,14 +4,16 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 
 class KnapsackTest {
-    
+
     @Test
     @DisplayName("Testing algorithm for the in.txt file")
     void checkResultOfAlgorithm() {
@@ -48,28 +50,29 @@ class KnapsackTest {
         Assertions.assertEquals(expectedResult, result);
     }
 
-    private Knapsack readKnapsackFromFile(String file) {
-        Knapsack knapsack = null;
-        final URL resource = KnapsackTest.class.getClassLoader().getResource(file);
-        if (resource == null){
-            throw new RuntimeException("File not found");
+    private Knapsack readKnapsackFromFile(String filepath) {
+        URL fileUrl = KnapsackTest.class.getClassLoader().getResource(filepath);
+        if (fileUrl == null) {
+            throw new RuntimeException("Cannot find file '" + filepath + "'");
         }
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(resource.getFile()))) {
-            String line = bufferedReader.readLine();
-            String[] splitLine = line.split(" ");
-            knapsack = new Knapsack(Integer.parseInt(splitLine[0]), Integer.parseInt(splitLine[1]));
 
-            while ((line = bufferedReader.readLine()) != null) {
-                splitLine = line.split(" ");
+        try {
+            List<String> fileContent = Files.readAllLines(Paths.get(fileUrl.toURI()));
+            String[] knapsackConstraintsLine = fileContent.get(0).split(" ");
+            Knapsack knapsack = new Knapsack(Integer.parseInt(knapsackConstraintsLine[0]), Integer.parseInt(knapsackConstraintsLine[1]));
+
+            for (int i = 1; i < fileContent.size(); i++) {
+                String[] thingLine = fileContent.get(i).split(" ");
                 knapsack.add(new Thing(
-                        Integer.parseInt(splitLine[0]),
-                        Integer.parseInt(splitLine[1]),
-                        Integer.parseInt(splitLine[2]))
+                        Integer.parseInt(thingLine[0]),
+                        Integer.parseInt(thingLine[1]),
+                        Integer.parseInt(thingLine[2]))
                 );
             }
-        } catch (IOException ex) {
-            ex.printStackTrace();
+
+            return knapsack;
+        } catch (IOException | URISyntaxException ex) {
+            throw new RuntimeException("Cannot read knapsack", ex);
         }
-        return knapsack;
     }
 }
